@@ -1,10 +1,8 @@
-import math
-import eea
-import random
-import primes
+import math, random
+from rsa_math import eea, primes
 
-class RSA(n=512):
-    def generate_keys():
+class RSA:
+    def generate_keys(n=512):
         p, q = primes.generate(n=n, k=2)
         n = p*q
         phi = (p-1)*(q-1)
@@ -16,4 +14,4 @@ class RSA(n=512):
                 if gcd == (s*phi + t*e):
                     d = t % phi
                     break
-        return (e, n, d)
+        return ((e, n),(d, n))
